@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/orbitalsim.dir/main.cpp.o"
-  "CMakeFiles/orbitalsim.dir/main.cpp.o.d"
   "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o"
-  "CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o.d"
   "CMakeFiles/orbitalsim.dir/orbitalSimView.cpp.o"
-  "CMakeFiles/orbitalsim.dir/orbitalSimView.cpp.o.d"
   "orbitalsim"
   "orbitalsim.pdb"
 )

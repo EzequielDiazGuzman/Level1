@@ -1,15 +1,17 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/main_test.cpp" "/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/orbitalsim_test.dir/main_test.cpp.o"
+  "/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp" "/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/orbitalsim_test.dir/orbitalSim.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/main_test.cpp" "CMakeFiles/orbitalsim_test.dir/main_test.cpp.o" "gcc" "CMakeFiles/orbitalsim_test.dir/main_test.cpp.o.d"
-  "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSim.cpp" "CMakeFiles/orbitalsim_test.dir/orbitalSim.cpp.o" "gcc" "CMakeFiles/orbitalsim_test.dir/orbitalSim.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/nomad1c/dev/vcpkg/installed/x64-linux/include"
   )
 
 # Targets to which this target links.

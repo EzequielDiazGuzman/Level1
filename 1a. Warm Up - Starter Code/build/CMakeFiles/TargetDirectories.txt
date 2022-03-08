@@ -1,5 +1,5 @@
-/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build/CMakeFiles/orbitalsim.dir
-/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build/CMakeFiles/orbitalsim_test.dir
-/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build/CMakeFiles/test.dir
-/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build/CMakeFiles/edit_cache.dir
-/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build/CMakeFiles/rebuild_cache.dir
+/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/rebuild_cache.dir
+/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/edit_cache.dir
+/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/test.dir
+/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/orbitalsim_test.dir
+/home/nomad1c/itba/eda/Level1/1a. Warm Up - Starter Code/build/CMakeFiles/orbitalsim.dir
