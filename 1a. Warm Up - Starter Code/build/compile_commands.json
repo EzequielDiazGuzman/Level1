@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build",
+  "command": "/usr/bin/clang++  -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -fsanitize=address -std=gnu++11 -o CMakeFiles/orbitalsim.dir/main.cpp.o -c \"/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/main.cpp\"",
+  "file": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/main.cpp"
+},
+{
+  "directory": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build",
+  "command": "/usr/bin/clang++  -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -fsanitize=address -std=gnu++11 -o CMakeFiles/orbitalsim.dir/orbitalSim.cpp.o -c \"/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSim.cpp\"",
+  "file": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSim.cpp"
+},
+{
+  "directory": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build",
+  "command": "/usr/bin/clang++  -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -fsanitize=address -std=gnu++11 -o CMakeFiles/orbitalsim.dir/orbitalSimView.cpp.o -c \"/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSimView.cpp\"",
+  "file": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSimView.cpp"
+},
+{
+  "directory": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -fsanitize=address -std=gnu++11 -o CMakeFiles/orbitalsim_test.dir/main_test.cpp.o -c \"/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/main_test.cpp\"",
+  "file": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/main_test.cpp"
+},
+{
+  "directory": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -fsanitize=address -std=gnu++11 -o CMakeFiles/orbitalsim_test.dir/orbitalSim.cpp.o -c \"/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSim.cpp\"",
+  "file": "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/orbitalSim.cpp"
+}
+]

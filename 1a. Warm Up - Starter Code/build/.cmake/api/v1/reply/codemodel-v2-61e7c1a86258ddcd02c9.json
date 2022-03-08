@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "orbitalsim",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "orbitalsim::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-orbitalsim-Debug-38917b75927766ac4936.json",
+					"name" : "orbitalsim",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "orbitalsim_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-orbitalsim_test-Debug-c65396eddc931a537091.json",
+					"name" : "orbitalsim_test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code/build",
+		"source" : "/Users/camiladiazguzman/Desktop/Ezequiel/EDA/Code/1a. Warm Up - Starter Code"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
