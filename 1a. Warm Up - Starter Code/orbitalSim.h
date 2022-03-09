@@ -18,7 +18,10 @@ struct OrbitalBody
 
 struct OrbitalSim
 {
-    // Your code goes here...
+    float timeStep;
+    double timeElapsed; //getTime() is time since InitWindow()
+    int bodiesInSym;
+    OrbitalBody * orbitalBodies[];
 };
 
 OrbitalSim *makeOrbitalSim(float timeStep);
