@@ -48,4 +48,3 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(orbitalsim PRIVATE "-framework Cocoa")
     target_link_libraries(orbitalsim PRIVATE "-framework OpenGL")
 endif()
-
