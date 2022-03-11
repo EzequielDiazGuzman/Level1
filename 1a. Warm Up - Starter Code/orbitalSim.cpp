@@ -12,6 +12,10 @@
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
 #define ASTEROIDS_MEAN_RADIUS 4E11F
 
+void getAcceleration (OrbitalSim *sim);
+void getVelocity (OrbitalSim *sim);
+void getPosition (OrbitalSim *sim);
+
 // Gets a random value between min and max
 float getRandomFloat(float min, float max)
 {
@@ -72,6 +76,35 @@ OrbitalSim *makeOrbitalSim(float timeStep)
 // Simulates a timestep
 void updateOrbitalSim(OrbitalSim *sim)
 {
+    getAcceleration(sim);
+    getVelocity(sim);
+    getPosition(sim);
+}
+
+void freeOrbitalSim(OrbitalSim *sim)
+{
+    free(sim->orbitalBodies);
+    free(sim);
+}
+
+void getPosition (OrbitalSim *sim)
+{
+    for (int i = 0; i<sim->bodiesInSym; i++)
+    {
+        sim->orbitalBodies[i].position = Vector3Add(sim->orbitalBodies[i].position, Vector3Scale(sim->orbitalBodies[i].velocity, sim->timeStep));
+    }
+}
+
+void getVelocity (OrbitalSim *sim)
+{
+    for (int i = 0; i<sim->bodiesInSym; i++)
+    {
+        sim->orbitalBodies[i].velocity = Vector3Add(sim->orbitalBodies[i].velocity, Vector3Scale(sim->orbitalBodies[i].acceleration, sim->timeStep));
+    }
+}
+
+void getAcceleration (OrbitalSim *sim)
+{
     for (int i = 0; i < sim->bodiesInSym; i++)
     {
         for (int j = 0; j < sim->bodiesInSym; j++)
@@ -82,17 +115,4 @@ void updateOrbitalSim(OrbitalSim *sim)
             }
         }
     }
-
-    for (int i=0; i<sim->bodiesInSym; i++)
-    {
-        sim->orbitalBodies[i].velocity = Vector3Add(sim->orbitalBodies[i].velocity, Vector3Scale(sim->orbitalBodies[i].acceleration, sim->timeStep));
-        sim->orbitalBodies[i].position = Vector3Add(sim->orbitalBodies[i].position, Vector3Scale(sim->orbitalBodies[i].velocity, sim->timeStep));
-    }
 }
-
-void freeOrbitalSim(OrbitalSim *sim)
-{
-    free(sim->orbitalBodies);
-    free(sim);
-}
-
