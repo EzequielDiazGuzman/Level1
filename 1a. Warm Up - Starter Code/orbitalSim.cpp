@@ -105,13 +105,19 @@ void getVelocity (OrbitalSim *sim)
 
 void getAcceleration (OrbitalSim *sim)
 {
+
+
     for (int i = 0; i < sim->bodiesInSym; i++)
     {
+        sim->orbitalBodies[i].acceleration = {0,0,0};
+
         for (int j = 0; j < sim->bodiesInSym; j++)
         {
             if (i != j)
             {
-                sim->orbitalBodies[i].acceleration = Vector3Add(sim->orbitalBodies[i].acceleration, Vector3Scale(Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position), (GRAVITATIONAL_CONSTANT*(-1)*sim->orbitalBodies[j].mass)/pow((Vector3Length(Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position))),3)));
+                float massj = sim->orbitalBodies[j].mass;
+                Vector3 xij = Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position);
+                sim->orbitalBodies[i].acceleration = Vector3Add(sim->orbitalBodies[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
             }
         }
     }
