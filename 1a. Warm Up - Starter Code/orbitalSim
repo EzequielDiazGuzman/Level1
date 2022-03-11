@@ -22888,6 +22888,7 @@ struct OrbitalBody
     Color color;
     Vector3 position;
     Vector3 velocity;
+    Vector3 acceleration;
 };
 
 struct OrbitalSim
@@ -22895,7 +22896,7 @@ struct OrbitalSim
     float timeStep;
     double timeElapsed;
     int bodiesInSym;
-    OrbitalBody * orbitalBodies[];
+    OrbitalBody *orbitalBodies;
 };
 
 OrbitalSim *makeOrbitalSim(float timeStep);
@@ -23282,15 +23283,36 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
 OrbitalSim *makeOrbitalSim(float timeStep)
 {
     OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(OrbitalSim));
+    if (sim == 
+# 53 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp" 3 4
+              __null
+# 53 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp"
+                  ) return 
+# 53 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp" 3 4
+                           __null
+# 53 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp"
+                               ;
     sim->timeStep = timeStep;
-    sim->bodiesInSym = sizeof(solarSystem)/sizeof(EphemeridesBody);
+    sim->bodiesInSym = (sizeof(solarSystem) / sizeof(EphemeridesBody));
+    sim->orbitalBodies = (OrbitalBody*)malloc(sim->bodiesInSym*sizeof(OrbitalBody));
+    if (sim->orbitalBodies == 
+# 57 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp" 3 4
+                             __null
+# 57 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp"
+                                 ) return 
+# 57 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp" 3 4
+                                          __null
+# 57 "/home/nomad1c/itba/eda/1a-warmup/Level1/1a. Warm Up - Starter Code/orbitalSim.cpp"
+                                              ;
+
     for (int i = 0; i < sim->bodiesInSym; i++)
     {
-        sim->orbitalBodies[i]->color = solarSystem[i].color;
-        sim->orbitalBodies[i]->mass = solarSystem[i].mass;
-        sim->orbitalBodies[i]->radius = solarSystem[i].radius;
-        sim->orbitalBodies[i]->position = solarSystem[i].position;
-        sim->orbitalBodies[i]->velocity = solarSystem[i].velocity;
+        sim->orbitalBodies[i].color = solarSystem[i].color;
+        sim->orbitalBodies[i].mass = solarSystem[i].mass;
+        sim->orbitalBodies[i].radius = solarSystem[i].radius;
+        sim->orbitalBodies[i].position = solarSystem[i].position;
+        sim->orbitalBodies[i].velocity = solarSystem[i].velocity;
+        sim->orbitalBodies[i].acceleration = {0,0,0};
     };
 
     return sim;
@@ -23299,10 +23321,20 @@ OrbitalSim *makeOrbitalSim(float timeStep)
 
 void updateOrbitalSim(OrbitalSim *sim)
 {
-
+    for (int i = 0; i < sim->bodiesInSym; i++)
+    {
+        for (int j = 0; j < sim->bodiesInSym; j++)
+        {
+            if (i != j)
+            {
+                sim->orbitalBodies[i].acceleration = Vector3Add(sim->orbitalBodies[i].acceleration, Vector3Scale(Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position), (6.6743E-11F*(-1)*sim->orbitalBodies[j].mass)/pow((Vector3Length(Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position))),3)));
+            }
+        }
+    }
 }
 
 void freeOrbitalSim(OrbitalSim *sim)
 {
+    free(sim->orbitalBodies);
     free(sim);
 }

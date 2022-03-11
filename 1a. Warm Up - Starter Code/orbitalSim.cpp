@@ -50,16 +50,20 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
 OrbitalSim *makeOrbitalSim(float timeStep)
 {
     OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(OrbitalSim));
-    if (sim == NULL) return -1;
+    if (sim == NULL) return NULL;
     sim->timeStep = timeStep;
     sim->bodiesInSym = SOLARSYSTEM_BODYNUM;
+    sim->orbitalBodies = (OrbitalBody*)malloc(sim->bodiesInSym*sizeof(OrbitalBody));
+    if (sim->orbitalBodies == NULL) return NULL;
+
     for (int i = 0; i < sim->bodiesInSym; i++)
     {
-        sim->orbitalBodies[i]->color = solarSystem[i].color;
-        sim->orbitalBodies[i]->mass = solarSystem[i].mass;
-        sim->orbitalBodies[i]->radius = solarSystem[i].radius;
-        sim->orbitalBodies[i]->position = solarSystem[i].position;
-        sim->orbitalBodies[i]->velocity = solarSystem[i].velocity;
+        sim->orbitalBodies[i].color = solarSystem[i].color;
+        sim->orbitalBodies[i].mass = solarSystem[i].mass;
+        sim->orbitalBodies[i].radius = solarSystem[i].radius;
+        sim->orbitalBodies[i].position = solarSystem[i].position;
+        sim->orbitalBodies[i].velocity = solarSystem[i].velocity;
+        sim->orbitalBodies[i].acceleration = {0,0,0};
     };
 
     return sim;
@@ -68,10 +72,27 @@ OrbitalSim *makeOrbitalSim(float timeStep)
 // Simulates a timestep
 void updateOrbitalSim(OrbitalSim *sim)
 {
-    // Your code goes here...
+    for (int i = 0; i < sim->bodiesInSym; i++)
+    {
+        for (int j = 0; j < sim->bodiesInSym; j++)
+        {
+            if (i != j)
+            {
+                sim->orbitalBodies[i].acceleration = Vector3Add(sim->orbitalBodies[i].acceleration, Vector3Scale(Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position), (GRAVITATIONAL_CONSTANT*(-1)*sim->orbitalBodies[j].mass)/pow((Vector3Length(Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position))),3)));
+            }
+        }
+    }
+
+    for (int i=0; i<sim->bodiesInSym; i++)
+    {
+        sim->orbitalBodies[i].velocity = Vector3Add(sim->orbitalBodies[i].velocity, Vector3Scale(sim->orbitalBodies[i].acceleration, sim->timeStep));
+        sim->orbitalBodies[i].position = Vector3Add(sim->orbitalBodies[i].position, Vector3Scale(sim->orbitalBodies[i].velocity, sim->timeStep));
+    }
 }
 
 void freeOrbitalSim(OrbitalSim *sim)
 {
+    free(sim->orbitalBodies);
     free(sim);
 }
+
