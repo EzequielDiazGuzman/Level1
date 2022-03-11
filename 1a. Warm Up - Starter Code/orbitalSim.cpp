@@ -7,6 +7,7 @@
 
 #include "orbitalSim.h"
 #include "ephemerides.h"
+#include <stdlib.h>
 
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
 #define ASTEROIDS_MEAN_RADIUS 4E11F
@@ -48,9 +49,20 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
 // Make an orbital simulation
 OrbitalSim *makeOrbitalSim(float timeStep)
 {
-    // Your code goes here...
+    const int bodiesInSym = sizeof(solarSystem)/sizeof(EphemeridesBody);
+    OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(float) + sizeof(double) + sizeof(int) + bodiesInSym*sizeof(OrbitalSim));
+    sim->timeStep = timeStep;
+    sim->bodiesInSym = bodiesInSym;
+    for (int i = 0; i < sim->bodiesInSym; i++)
+    {
+        sim->orbitalBodies[i]->color = solarSystem[i].color;
+        sim->orbitalBodies[i]->mass = solarSystem[i].mass;
+        sim->orbitalBodies[i]->radius = solarSystem[i].radius;
+        sim->orbitalBodies[i]->position = solarSystem[i].position;
+        sim->orbitalBodies[i]->velocity = solarSystem[i].velocity;
+    };
 
-    return NULL; // Replace...
+    return sim;
 }
 
 // Simulates a timestep
@@ -61,5 +73,5 @@ void updateOrbitalSim(OrbitalSim *sim)
 
 void freeOrbitalSim(OrbitalSim *sim)
 {
-    // Your code goes here...
+    free(sim);
 }

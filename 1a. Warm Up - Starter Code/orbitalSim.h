@@ -13,7 +13,11 @@
 
 struct OrbitalBody
 {
-    // Your code goes here...
+    float mass;
+    float radius;
+    Color color;
+    Vector3 position;
+    Vector3 velocity;
 };
 
 struct OrbitalSim
