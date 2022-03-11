@@ -49,10 +49,10 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
 // Make an orbital simulation
 OrbitalSim *makeOrbitalSim(float timeStep)
 {
-    const int bodiesInSym = sizeof(solarSystem)/sizeof(EphemeridesBody);
-    OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(float) + sizeof(double) + sizeof(int) + bodiesInSym*sizeof(OrbitalSim));
+    OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(OrbitalSim));
+    if (sim == NULL) return -1;
     sim->timeStep = timeStep;
-    sim->bodiesInSym = bodiesInSym;
+    sim->bodiesInSym = SOLARSYSTEM_BODYNUM;
     for (int i = 0; i < sim->bodiesInSym; i++)
     {
         sim->orbitalBodies[i]->color = solarSystem[i].color;
