@@ -43,11 +43,11 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
     float vy = getRandomFloat(-1E2F, 1E2F);
 
     // Fill in with your own fields:
-    // body->mass = 1E12F;  // Typical asteroid weight: 1 billion tons
-    // body->radius = 2E3F; // Typical asteroid radius: 2km
-    // body->color = GRAY;
-    // body->position = {r * cosf(phi), 0, r * sinf(phi)};
-    // body->velocity = {-v * sinf(phi), vy, v * cosf(phi)};
+    body->mass = 1E12F;  // Typical asteroid weight: 1 billion tons
+    body->radius = 2E3F; // Typical asteroid radius: 2km
+    body->color = GRAY;
+    body->position = {r * cosf(phi), 0, r * sinf(phi)};
+    body->velocity = {-v * sinf(phi), vy, v * cosf(phi)};
 }
 
 // Make an orbital simulation
@@ -59,6 +59,14 @@ OrbitalSim *makeOrbitalSim(float timeStep)
     sim->bodiesInSym = SOLARSYSTEM_BODYNUM;
     sim->orbitalBodies = (OrbitalBody*)malloc(sim->bodiesInSym*sizeof(OrbitalBody));
     if (sim->orbitalBodies == NULL) return NULL;
+
+    sim->asteroidsInSym = 500;
+    sim->asteroids = (OrbitalBody*)malloc(sim->asteroidsInSym*sizeof(OrbitalBody));
+
+    for (int i=0; i<sim->asteroidsInSym; i++)
+    {
+        placeAsteroid(&(sim->asteroids[i]), sim->orbitalBodies[0].mass);
+    }
 
     for (int i = 0; i < sim->bodiesInSym; i++)
     {

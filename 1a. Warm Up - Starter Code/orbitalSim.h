@@ -27,6 +27,8 @@ struct OrbitalSim
     double timeElapsed; //getTime() is time since InitWindow()
     int bodiesInSym;
     OrbitalBody *orbitalBodies;
+    int asteroidsInSym;
+    OrbitalBody *asteroids;
 };
 
 OrbitalSim *makeOrbitalSim(float timeStep);
