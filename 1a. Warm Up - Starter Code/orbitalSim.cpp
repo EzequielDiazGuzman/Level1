@@ -55,8 +55,10 @@ OrbitalSim *makeOrbitalSim(float timeStep)
 {
     OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(OrbitalSim));
     if (sim == NULL) return NULL;
+
     sim->timeStep = timeStep;
     sim->bodiesInSym = SOLARSYSTEM_BODYNUM;
+
     sim->orbitalBodies = (OrbitalBody*)malloc(sim->bodiesInSym*sizeof(OrbitalBody));
     if (sim->orbitalBodies == NULL) return NULL;
 
@@ -95,6 +97,8 @@ void freeOrbitalSim(OrbitalSim *sim)
     free(sim);
 }
 
+
+// position, velocity and acceleration calculating functions
 void getPosition (OrbitalSim *sim)
 {
     for (int i = 0; i<sim->bodiesInSym; i++)
