@@ -62,7 +62,7 @@ OrbitalSim *makeOrbitalSim(float timeStep)
     sim->orbitalBodies = (OrbitalBody*)malloc(sim->bodiesInSym*sizeof(OrbitalBody));
     if (sim->orbitalBodies == NULL) return NULL;
 
-    sim->asteroidsInSym = 500;
+    sim->asteroidsInSym = 20000;
     sim->asteroids = (OrbitalBody*)malloc(sim->asteroidsInSym*sizeof(OrbitalBody));
 
 
@@ -154,15 +154,15 @@ void getAcceleration (OrbitalSim *sim)
             sim->asteroids[i].acceleration = Vector3Add(sim->asteroids[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
         }
 
-        for (int j = 0; j < sim->asteroidsInSym; j++)
-        {
-            if (i != j)
-            {
-                float massj = sim->asteroids[j].mass;
-                Vector3 xij = Vector3Subtract(sim->asteroids[i].position, sim->asteroids[j].position);
-                sim->asteroids[i].acceleration = Vector3Add(sim->asteroids[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
-            }
+        // for (int j = 0; j < sim->asteroidsInSym; j++)
+        // {
+        //     if (i != j)
+        //     {
+        //         float massj = sim->asteroids[j].mass;
+        //         Vector3 xij = Vector3Subtract(sim->asteroids[i].position, sim->asteroids[j].position);
+        //         sim->asteroids[i].acceleration = Vector3Add(sim->asteroids[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
+        //     }
             
-        }
+        // }
     }
 }

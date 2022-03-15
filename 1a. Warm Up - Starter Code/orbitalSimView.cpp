@@ -27,7 +27,7 @@ void renderOrbitalSim3D(OrbitalSim *sim)
     for (int i=0; i<sim->bodiesInSym; i++)
     {
         DrawSphere(Vector3Scale(sim->orbitalBodies[i].position, 1E-11), 0.005F * logf(sim->orbitalBodies[i].radius), sim->orbitalBodies[i].color);
-        DrawPoint3D(sim->orbitalBodies[i].position, sim->orbitalBodies[i].color);
+        DrawPoint3D(Vector3Scale(sim->orbitalBodies[i].position, 1E-11), sim->orbitalBodies[i].color);
     }
     for (int i=0; i<sim->asteroidsInSym; i++){
         //DrawSphere(Vector3Scale(sim->asteroids[i].position, 1E-11), 0.005F * logf(sim->asteroids[i].radius), sim->asteroids[i].color);
