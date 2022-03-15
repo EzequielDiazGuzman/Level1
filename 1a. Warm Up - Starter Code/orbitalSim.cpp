@@ -36,7 +36,7 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
     float phi = getRandomFloat(0, 2 * M_PI);
 
     // Surprise!
-    phi = 0;
+    //phi = 0;
 
     // https://en.wikipedia.org/wiki/Circular_orbit#Velocity
     float v = sqrtf(GRAVITATIONAL_CONSTANT * centerMass / r) * getRandomFloat(0.6F, 1.2F);
