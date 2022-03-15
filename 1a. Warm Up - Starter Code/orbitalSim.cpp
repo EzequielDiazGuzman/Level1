@@ -36,7 +36,7 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
     float phi = getRandomFloat(0, 2 * M_PI);
 
     // Surprise!
-    // phi = 0;
+    phi = 0;
 
     // https://en.wikipedia.org/wiki/Circular_orbit#Velocity
     float v = sqrtf(GRAVITATIONAL_CONSTANT * centerMass / r) * getRandomFloat(0.6F, 1.2F);
@@ -65,10 +65,6 @@ OrbitalSim *makeOrbitalSim(float timeStep)
     sim->asteroidsInSym = 500;
     sim->asteroids = (OrbitalBody*)malloc(sim->asteroidsInSym*sizeof(OrbitalBody));
 
-    for (int i=0; i<sim->asteroidsInSym; i++)
-    {
-        placeAsteroid(&(sim->asteroids[i]), sim->orbitalBodies[0].mass);
-    }
 
     for (int i = 0; i < sim->bodiesInSym; i++)
     {
@@ -79,6 +75,11 @@ OrbitalSim *makeOrbitalSim(float timeStep)
         sim->orbitalBodies[i].velocity = solarSystem[i].velocity;
         sim->orbitalBodies[i].acceleration = {0,0,0};
     };
+
+    for (int i=0; i<sim->asteroidsInSym; i++)
+    {
+        placeAsteroid(&(sim->asteroids[i]), sim->orbitalBodies[0].mass);
+    }
 
     return sim;
 }
