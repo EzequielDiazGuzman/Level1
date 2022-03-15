@@ -3,6 +3,18 @@
 # Project orbitalsim
 project(orbitalsim)
 
+# raylib-cpp
+find_package(raylib_cpp QUIET)
+if (NOT raylib_cpp_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(
+        raylib_cpp
+        GIT_REPOSITORY https://github.com/RobLoach/raylib-cpp.git
+        GIT_TAG v4.1.0
+    )
+    FetchContent_MakeAvailable(raylib_cpp)
+endif()
+
 # raylib: required for macOS
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(CMAKE_CXX_STANDARD 11)
@@ -21,7 +33,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(orbitalsim PRIVATE raylib)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_link_libraries(orbitalsim PRIVATE raylib m ${CMAKE_DL_LIBS} pthread GL rt X11)
+    target_link_libraries(orbitalsim PRIVATE raylib raylib_cpp m ${CMAKE_DL_LIBS} pthread GL rt X11)
 endif()
 
 
@@ -38,7 +50,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(orbitalsim_test PRIVATE raylib)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_link_libraries(orbitalsim_test PRIVATE raylib m ${CMAKE_DL_LIBS} pthread GL rt X11)
+    target_link_libraries(orbitalsim_test PRIVATE raylib raylib_cpp m ${CMAKE_DL_LIBS} pthread GL rt X11)
 endif()
 
 

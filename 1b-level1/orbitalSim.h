@@ -8,10 +8,10 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
-#include "raylib.h"
-#include "raymath.h"
+#include "raylib-cpp.hpp"
+// #include "raymath.h"
 
-struct OrbitalBody
+class OrbitalBody
 {
     float mass;
     float radius;
@@ -21,8 +21,12 @@ struct OrbitalBody
     Vector3 acceleration;
 };
 
-struct OrbitalSim
+class OrbitalSim
 {
+    public:
+
+
+    private:
     float timeStep;
     double timeElapsed; //getTime() is time since InitWindow()
     int bodiesInSym;
