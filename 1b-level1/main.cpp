@@ -7,7 +7,7 @@
  * Main module
  */
 
-#include "orbitalSim.hpp"
+#include "OrbitalSim.hpp"
 #include "orbitalSimView.hpp"
 
 #define SECONDS_PER_DAY 86400.0F
@@ -33,15 +33,16 @@ int main()
     // Orbital simulation
     float fps = 60.0F;							  // frames per second
     float timeMultiplier = 100 * SECONDS_PER_DAY; // Simulation speed: 100 days per real second
-    float timeStep = timeMultiplier / (fps*100);
+    float timeStep = timeMultiplier / (fps*50);
 
-    OrbitalSim *sim;
+    OrbitalSim sim(timeStep);
+    OrbitalSim *pSim = &sim;
 
     // Game loop
     while (!WindowShouldClose())
     {
         // Update simulation
-        sim->updateOrbitalSim();
+        pSim->updateOrbitalSim();
 
         // Camera
         UpdateCamera(&camera);
@@ -51,11 +52,11 @@ int main()
         ClearBackground(BLACK);
 
         BeginMode3D(camera);
-        renderOrbitalSim3D(sim);
+        renderOrbitalSim3D(pSim);
         DrawGrid(10, 10.0f);
         EndMode3D();
 
-        renderOrbitalSim2D(sim);
+        renderOrbitalSim2D(pSim);
         EndDrawing();
     }
 

@@ -1,3 +1,6 @@
+#ifndef ORBITALBODY_H
+#define ORBITALBODY_H
+
 #include "raylib-cpp.hpp"
 
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
@@ -25,3 +28,5 @@ class OrbitalBody
     float getRandomFloat(float min, float max);
     raylib::Vector3 getVelocity();
 };
+
+#endif

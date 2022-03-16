@@ -30,7 +30,7 @@ void renderOrbitalSim3D(OrbitalSim *sim)
     }
     for (int i=0; i<sim->asteroidsInSym; i++)
     {
-        DrawPoint3D(Vector3Scale(sim->asteroids[i].position, 1E-11), sim->asteroids[i].color);
+        DrawPoint3D(Vector3Scale(sim->asteroids[i].getPosition(), 1E-11), sim->asteroids[i].color);
     }
 }
 

@@ -23,7 +23,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif()
 
 # Main executable
-add_executable(orbitalsim main.cpp orbitalSim.cpp orbitalSimView.cpp OrbitalBody.cpp)
+add_executable(orbitalsim main.cpp OrbitalSim.cpp orbitalSimView.cpp OrbitalBody.cpp)
 
 # Raylib
 find_package(raylib CONFIG REQUIRED)
@@ -40,7 +40,7 @@ endif()
 # Main test
 enable_testing()
 
-add_executable(orbitalsim_test main_test.cpp orbitalSim.cpp)
+add_executable(orbitalsim_test main_test.cpp OrbitalSim.cpp)
 
 add_test(NAME test1 COMMAND orbitalsim_test)
 

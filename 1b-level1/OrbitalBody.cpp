@@ -1,6 +1,16 @@
 #include "raylib-cpp.hpp"
 #include "OrbitalBody.hpp"
 
+OrbitalBody::OrbitalBody ()
+{
+    ;
+}
+
+OrbitalBody::~OrbitalBody()
+{
+    ;
+}
+
 void OrbitalBody::initOrbitalBody(float mass, float radius, raylib::Color color, raylib::Vector3 position, raylib::Vector3 velocity)
 {
     this->mass = mass;
@@ -43,6 +53,6 @@ void OrbitalBody::initAsteroid(float centermass)
     this->mass = 1E12F;  // Typical asteroid weight: 1 billion tons
     this->radius = 5E2F; // Typical asteroid radius: 2km
     this->color = GRAY;
-    this->position = {r * cosf(phi), 0, r * sinf(phi)};
-    this->velocity = {-v * sinf(phi), vy, v * cosf(phi)};
+    this->position = raylib::Vector3(r * cosf(phi), 0, r * sinf(phi));
+    this->velocity = raylib::Vector3(-v * sinf(phi), vy, v * cosf(phi));
 }

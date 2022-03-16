@@ -5,7 +5,7 @@
  * Copyright (C) 2022 Marc S. Ressl
  */
 
-#include "orbitalSim.hpp"
+#include "OrbitalSim.hpp"
 #include "ephemerides.h"
 #include "OrbitalBody.hpp"
 #include <stdlib.h>
