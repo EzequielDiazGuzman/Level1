@@ -8,7 +8,7 @@
 #ifndef ORBITALSIMVIEW_H
 #define ORBITALSIMVIEW_H
 
-#include "orbitalSim.h"
+#include "orbitalSim.hpp"
 
 void renderOrbitalSim3D(OrbitalSim *sim);
 void renderOrbitalSim2D(OrbitalSim *sim);

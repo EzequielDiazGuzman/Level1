@@ -7,8 +7,8 @@
  * Main module
  */
 
-#include "orbitalSim.h"
-#include "orbitalSimView.h"
+#include "orbitalSim.hpp"
+#include "orbitalSimView.hpp"
 
 #define SECONDS_PER_DAY 86400.0F
 
@@ -35,13 +35,13 @@ int main()
     float timeMultiplier = 100 * SECONDS_PER_DAY; // Simulation speed: 100 days per real second
     float timeStep = timeMultiplier / (fps*100);
 
-    OrbitalSim *sim = makeOrbitalSim(timeStep);
+    OrbitalSim *sim;
 
     // Game loop
     while (!WindowShouldClose())
     {
         // Update simulation
-        updateOrbitalSim(sim);
+        sim->updateOrbitalSim();
 
         // Camera
         UpdateCamera(&camera);
@@ -60,8 +60,6 @@ int main()
     }
 
     CloseWindow();
-
-    freeOrbitalSim(sim);
 
     return 0;
 }

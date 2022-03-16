@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-#include "orbitalSim.h"
+#include "orbitalSim.hpp"
 
 #define SECONDS_PER_DAY 86400.0F
 
@@ -22,7 +22,7 @@ int main()
     float timeMultiplier = 100 * SECONDS_PER_DAY; // Simulation speed: 100 days per real second
     float timeStep = timeMultiplier / fps;
 
-    OrbitalSim *sim = makeOrbitalSim(timeStep);
+    // OrbitalSim *sim = makeOrbitalSim(timeStep);
 
     // Modify to suit your code:
     // if (sim->body[0].position.x != -1.283674643550172E+09F)
@@ -31,7 +31,7 @@ int main()
     //     return 1;
     // }
 
-    updateOrbitalSim(sim);
+    // updateOrbitalSim(sim);
 
     // Modify to suit your code:
     // if (sim->body[0].position.x != -1.284506496E+09F)

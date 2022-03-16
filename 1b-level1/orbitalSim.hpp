@@ -9,34 +9,29 @@
 #define ORBITALSIM_H
 
 #include "raylib-cpp.hpp"
-// #include "raymath.h"
-
-class OrbitalBody
-{
-    float mass;
-    float radius;
-    Color color;
-    Vector3 position;
-    Vector3 velocity;
-    Vector3 acceleration;
-};
+#include "OrbitalBody.hpp"
 
 class OrbitalSim
 {
     public:
+    OrbitalSim();
+    ~OrbitalSim();
 
+    OrbitalSim(float timeStep);
 
-    private:
+    void updateOrbitalSim();
+
     float timeStep;
     double timeElapsed; //getTime() is time since InitWindow()
     int bodiesInSym;
     OrbitalBody *orbitalBodies;
     int asteroidsInSym;
     OrbitalBody *asteroids;
-};
 
-OrbitalSim *makeOrbitalSim(float timeStep);
-void updateOrbitalSim(OrbitalSim *sim);
-void freeOrbitalSim(OrbitalSim *sim);
+    void updatePosition();
+    void updateVelocity();
+    void updateAcceleration();
+    private:
+};
 
 #endif

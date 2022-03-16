@@ -6,8 +6,7 @@
  */
 
 #include <time.h>
-
-#include "orbitalSimView.h"
+#include "orbitalSimView.hpp"
 
 const char* getISODate(float currentTime) {
     // Epoch: 2022-01-01
@@ -26,13 +25,12 @@ void renderOrbitalSim3D(OrbitalSim *sim)
 {
     for (int i=0; i<sim->bodiesInSym; i++)
     {
-        DrawSphere(Vector3Scale(sim->orbitalBodies[i].position, 1E-11), 0.005F * logf(sim->orbitalBodies[i].radius), sim->orbitalBodies[i].color);
-        DrawPoint3D(Vector3Scale(sim->orbitalBodies[i].position, 1E-11), sim->orbitalBodies[i].color);
+        DrawSphere(Vector3Scale(sim->orbitalBodies[i].getPosition(), 1E-11), 0.005F * logf(sim->orbitalBodies[i].radius), sim->orbitalBodies[i].color);
+        DrawPoint3D(Vector3Scale(sim->orbitalBodies[i].getPosition(), 1E-11), sim->orbitalBodies[i].color);
     }
-    for (int i=0; i<sim->asteroidsInSym; i++){
-        //DrawSphere(Vector3Scale(sim->asteroids[i].position, 1E-11), 0.005F * logf(sim->asteroids[i].radius), sim->asteroids[i].color);
+    for (int i=0; i<sim->asteroidsInSym; i++)
+    {
         DrawPoint3D(Vector3Scale(sim->asteroids[i].position, 1E-11), sim->asteroids[i].color);
-        //DrawCircle3D(Vector3Scale(sim->asteroids[i].position, 1E-11),0.0005F * logf(sim->asteroids[i].radius),Vector3One(),0,sim->asteroids[i].color);
     }
 }
 
