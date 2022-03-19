@@ -109,3 +109,19 @@ void OrbitalSim::updateAcceleration ()
         
     }
 }
+
+// Getters
+float OrbitalSim::getTimeStep()
+{
+    return this->timeStep;
+}
+
+int OrbitalSim::getBodiesInSym()
+{
+    return this->bodiesInSym;
+}
+
+int OrbitalSim::getAsteroidsInSym()
+{
+    return this-> asteroidsInSym;
+}

@@ -20,17 +20,23 @@ class OrbitalSim
 
     void updateOrbitalSim();
 
-    float timeStep;
-    double timeElapsed; //getTime() is time since InitWindow()
-    int bodiesInSym;
     OrbitalBody *orbitalBodies;
-    int asteroidsInSym;
     OrbitalBody *asteroids;
 
     void updatePosition();
     void updateVelocity();
     void updateAcceleration();
+
+    float getTimeStep();
+    int getAsteroidsInSym();
+    int getBodiesInSym();
+
+    
     private:
+    int asteroidsInSym;
+    int bodiesInSym;
+    float timeStep;
+    double timeElapsed; //getTime() is time since InitWindow()
 };
 
 #endif
