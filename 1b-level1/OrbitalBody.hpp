@@ -16,17 +16,25 @@ class OrbitalBody
     void initAsteroid(float centermass);
 
     raylib::Vector3 getPosition();
+    raylib::Vector3 getVelocity();
+    raylib::Vector3 getAcceleration();
+    void setPosition(raylib::Vector3 x);
+    void setVelocity(raylib::Vector3 x);
+    void setAcceleration(raylib::Vector3 x);
 
+    raylib::Color getColor();
+    float getRadius();
+    float getMass();
+
+    
+    private:
+    float getRandomFloat(float min, float max);
     float mass;
     raylib::Vector3 position;
     raylib::Vector3 velocity;
     raylib::Vector3 acceleration;
     raylib::Color color;
     float radius;
-    
-    private:
-    float getRandomFloat(float min, float max);
-    raylib::Vector3 getVelocity();
 };
 
 #endif

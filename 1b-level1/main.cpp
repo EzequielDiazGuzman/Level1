@@ -7,7 +7,6 @@
  * Main module
  */
 
-#include "OrbitalSim.hpp"
 #include "orbitalSimView.hpp"
 
 #define SECONDS_PER_DAY 86400.0F

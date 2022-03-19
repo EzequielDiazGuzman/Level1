@@ -25,12 +25,12 @@ void renderOrbitalSim3D(OrbitalSim *sim)
 {
     for (int i=0; i<sim->bodiesInSym; i++)
     {
-        DrawSphere(Vector3Scale(sim->orbitalBodies[i].getPosition(), 1E-11), 0.005F * logf(sim->orbitalBodies[i].radius), sim->orbitalBodies[i].color);
-        DrawPoint3D(Vector3Scale(sim->orbitalBodies[i].getPosition(), 1E-11), sim->orbitalBodies[i].color);
+        DrawSphere(Vector3Scale(sim->orbitalBodies[i].getPosition(), 1E-11), 0.005F * logf(sim->orbitalBodies[i].getRadius()), sim->orbitalBodies[i].getColor());
+        DrawPoint3D(Vector3Scale(sim->orbitalBodies[i].getPosition(), 1E-11), sim->orbitalBodies[i].getColor());
     }
     for (int i=0; i<sim->asteroidsInSym; i++)
     {
-        DrawPoint3D(Vector3Scale(sim->asteroids[i].getPosition(), 1E-11), sim->asteroids[i].color);
+        DrawPoint3D(Vector3Scale(sim->asteroids[i].getPosition(), 1E-11), sim->asteroids[i].getColor());
     }
 }
 

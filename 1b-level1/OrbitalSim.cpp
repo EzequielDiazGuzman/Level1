@@ -7,7 +7,6 @@
 
 #include "OrbitalSim.hpp"
 #include "ephemerides.h"
-#include "OrbitalBody.hpp"
 #include <stdlib.h>
 
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
@@ -32,7 +31,7 @@ OrbitalSim::OrbitalSim(float timeStep)
     for (int i=0; i<this->asteroidsInSym; i++)
     {
         // TODO: centermass no hardcodeado
-        this->asteroids[i].initAsteroid(this->orbitalBodies[0].mass);
+        this->asteroids[i].initAsteroid(this->orbitalBodies[0].getMass());
     }
 
 }
@@ -57,12 +56,12 @@ void OrbitalSim::updatePosition ()
 {
     for (int i = 0; i<this->bodiesInSym; i++)
     {
-        this->orbitalBodies[i].position = Vector3Add(this->orbitalBodies[i].position, Vector3Scale(this->orbitalBodies[i].velocity, this->timeStep));
+        this->orbitalBodies[i].setPosition(Vector3Add(this->orbitalBodies[i].getPosition(), Vector3Scale(this->orbitalBodies[i].getVelocity(), this->timeStep)));
     }
 
     for (int i = 0; i<this->asteroidsInSym; i++)
     {
-        this->asteroids[i].position = Vector3Add(this->asteroids[i].position, Vector3Scale(this->asteroids[i].velocity, this->timeStep));
+        this->asteroids[i].setPosition(Vector3Add(this->asteroids[i].getPosition(), Vector3Scale(this->asteroids[i].getVelocity(), this->timeStep)));
     }
 }
 
@@ -70,12 +69,12 @@ void OrbitalSim::updateVelocity ()
 {
     for (int i = 0; i<this->bodiesInSym; i++)
     {
-        this->orbitalBodies[i].velocity = Vector3Add(this->orbitalBodies[i].velocity, Vector3Scale(this->orbitalBodies[i].acceleration, this->timeStep));
+        this->orbitalBodies[i].setVelocity(Vector3Add(this->orbitalBodies[i].getVelocity(), Vector3Scale(this->orbitalBodies[i].getAcceleration(), this->timeStep)));
     }
 
     for (int i = 0; i<this->asteroidsInSym; i++)
     {
-        this->asteroids[i].velocity = Vector3Add(this->asteroids[i].velocity, Vector3Scale(this->asteroids[i].acceleration, this->timeStep));
+        this->asteroids[i].setVelocity(Vector3Add(this->asteroids[i].getVelocity(), Vector3Scale(this->asteroids[i].getAcceleration(), this->timeStep)));
     }
 }
 
@@ -83,28 +82,28 @@ void OrbitalSim::updateAcceleration ()
 {
     for (int i = 0; i < this->bodiesInSym; i++)
     {
-        this->orbitalBodies[i].acceleration = Vector3Zero();
+        this->orbitalBodies[i].setAcceleration(Vector3Zero());
 
         for (int j = 0; j < this->bodiesInSym; j++)
         {
             if (i != j)
             {
-                float massj = this->orbitalBodies[j].mass;
-                Vector3 xij = Vector3Subtract(this->orbitalBodies[i].position, this->orbitalBodies[j].position);
-                this->orbitalBodies[i].acceleration = Vector3Add(this->orbitalBodies[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
+                float massj = this->orbitalBodies[j].getMass();
+                Vector3 xij = Vector3Subtract(this->orbitalBodies[i].getPosition(), this->orbitalBodies[j].getPosition());
+                this->orbitalBodies[i].setAcceleration(Vector3Add(this->orbitalBodies[i].getAcceleration(), Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3)))));
             }
         }
     }
 
     for (int i = 0; i < this->asteroidsInSym; i++)
     {
-        this->asteroids[i].acceleration = Vector3Zero();
+        this->asteroids[i].setAcceleration(Vector3Zero());
 
         for (int j = 0; j < this->bodiesInSym; j++)
         {
-            float massj = this->orbitalBodies[j].mass;
-            Vector3 xij = Vector3Subtract(this->asteroids[i].position, this->orbitalBodies[j].position);
-            this->asteroids[i].acceleration = Vector3Add(this->asteroids[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
+            float massj = this->orbitalBodies[j].getMass();
+            Vector3 xij = Vector3Subtract(this->asteroids[i].getPosition(), this->orbitalBodies[j].getPosition());
+            this->asteroids[i].setAcceleration(Vector3Add(this->asteroids[i].getAcceleration(), Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3)))));
         }
 
         

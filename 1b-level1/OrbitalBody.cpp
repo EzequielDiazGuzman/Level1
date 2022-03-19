@@ -21,10 +21,6 @@ void OrbitalBody::initOrbitalBody(float mass, float radius, raylib::Color color,
     this->acceleration = Vector3Zero();
 }
 
-raylib::Vector3 OrbitalBody::getPosition()
-{
-    return this->position;
-}
 
 // Gets a random value between min and max
 float OrbitalBody::getRandomFloat(float min, float max)
@@ -55,4 +51,50 @@ void OrbitalBody::initAsteroid(float centermass)
     this->color = GRAY;
     this->position = raylib::Vector3(r * cosf(phi), 0, r * sinf(phi));
     this->velocity = raylib::Vector3(-v * sinf(phi), vy, v * cosf(phi));
+}
+// Getters
+raylib::Vector3 OrbitalBody::getPosition()
+{
+    return this->position;
+}
+
+raylib::Vector3 OrbitalBody::getVelocity()
+{
+    return this->velocity;
+}
+
+raylib::Vector3 OrbitalBody::getAcceleration()
+{
+    return this->acceleration;
+}
+
+raylib::Color OrbitalBody::getColor()
+{
+    return this->color;
+}
+
+float OrbitalBody::getRadius()
+{
+    return this->radius;
+}
+
+float OrbitalBody::getMass()
+{
+    return this->mass;
+}
+
+// Setters
+void OrbitalBody::setPosition(raylib::Vector3 x)
+{
+    this->position = x;
+}
+
+void OrbitalBody::setVelocity(raylib::Vector3 x)
+{
+    this->velocity = x;
+}
+
+void OrbitalBody::setAcceleration(raylib::Vector3 x)
+{
+   this->acceleration = x;
 }

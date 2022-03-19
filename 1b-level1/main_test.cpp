@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-#include "orbitalSim.hpp"
+#include "OrbitalSim.hpp"
 
 #define SECONDS_PER_DAY 86400.0F
 

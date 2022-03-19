@@ -8,7 +8,6 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
-#include "raylib-cpp.hpp"
 #include "OrbitalBody.hpp"
 
 class OrbitalSim
