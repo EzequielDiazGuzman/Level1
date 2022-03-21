@@ -125,3 +125,27 @@ int OrbitalSim::getAsteroidsInSym()
 {
     return this-> asteroidsInSym;
 }
+
+raylib::Vector3 OrbitalSim::getPosition(int i, bool asteroid)
+{
+    if (asteroid)
+        return this->asteroids[i].getPosition();
+    else
+        return this->orbitalBodies[i].getPosition();
+}
+
+raylib::Color OrbitalSim::getColor(int i, bool asteroid)
+{
+    if (asteroid)
+        return this->asteroids[i].getColor();
+    else
+        return this->orbitalBodies[i].getColor();
+}
+
+float OrbitalSim::getRadius(int i, bool asteroid)
+{
+    if (asteroid)
+        return this->asteroids[i].getRadius();
+    else
+        return this->orbitalBodies[i].getRadius();
+}

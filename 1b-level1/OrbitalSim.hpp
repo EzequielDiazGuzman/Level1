@@ -20,12 +20,14 @@ class OrbitalSim
 
     void updateOrbitalSim();
 
-    OrbitalBody *orbitalBodies;
-    OrbitalBody *asteroids;
 
     void updatePosition();
     void updateVelocity();
     void updateAcceleration();
+
+    raylib::Vector3 getPosition(int i, bool asteroid);
+    raylib::Color getColor(int i, bool asteroid);
+    float getRadius(int i, bool asteroid);
 
     float getTimeStep();
     int getAsteroidsInSym();
@@ -33,6 +35,8 @@ class OrbitalSim
 
     
     private:
+    OrbitalBody *orbitalBodies;
+    OrbitalBody *asteroids;
     int asteroidsInSym;
     int bodiesInSym;
     float timeStep;
