@@ -27,8 +27,7 @@ class OrbitalSim
 
     raylib::Vector3 getPosition(int i, bool asteroid);
     raylib::Color getColor(int i, bool asteroid);
-    float getRadius(int i, bool asteroid);
-
+    float getRadius(int i);
     float getTimeStep();
     int getAsteroidsInSym();
     int getBodiesInSym();

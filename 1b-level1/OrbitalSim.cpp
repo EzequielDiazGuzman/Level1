@@ -142,10 +142,7 @@ raylib::Color OrbitalSim::getColor(int i, bool asteroid)
         return this->orbitalBodies[i].getColor();
 }
 
-float OrbitalSim::getRadius(int i, bool asteroid)
+float OrbitalSim::getRadius(int i)
 {
-    if (asteroid)
-        return this->asteroids[i].getRadius();
-    else
-        return this->orbitalBodies[i].getRadius();
+    return this->orbitalBodies[i].getRadius();
 }
