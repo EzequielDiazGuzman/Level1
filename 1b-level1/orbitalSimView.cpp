@@ -5,6 +5,8 @@
  * Copyright (C) 2022 Marc S. Ressl
  */
 
+ 
+
 #include <time.h>
 #include "orbitalSimView.hpp"
 
@@ -18,19 +20,23 @@ const char* getISODate(float currentTime) {
 
     // Print ISO date for local time
     struct tm* local_tm = localtime(&local_time);
-    return TextFormat("Date: %04d-%02d-%02d", 1900 + local_tm->tm_year, local_tm->tm_mon + 1, local_tm->tm_mday);
+    return TextFormat("Date: %04d-%02d-%02d", 1900 + local_tm->tm_year,
+                      local_tm->tm_mon + 1, local_tm->tm_mday);
 }
 
 void renderOrbitalSim3D(OrbitalSim *sim)
 {
     for (int i=0; i<sim->getBodiesInSym(); i++)
     {
-        DrawSphere(Vector3Scale(sim->getPosition(i,false), 1E-11), 0.005F * logf(sim->getRadius(i)), sim->getColor(i,false));
-        DrawPoint3D(Vector3Scale(sim->getPosition(i,false), 1E-11), sim->getColor(i,false));
+        DrawSphere(Vector3Scale(sim->getPosition(i,false), 1E-11), 0.005F *
+                   logf(sim->getRadius(i)), sim->getColor(i,false));
+        DrawPoint3D(Vector3Scale(sim->getPosition(i,false), 1E-11),
+                    sim->getColor(i,false));
     }
     for (int i=0; i<sim->getAsteroidsInSym(); i++)
     {
-        DrawPoint3D(Vector3Scale(sim->getPosition(i, true), 1E-11), sim->getColor(i, true));
+        DrawPoint3D(Vector3Scale(sim->getPosition(i, true), 1E-11), sim->
+                    getColor(i, true));
     }
 }
 

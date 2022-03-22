@@ -5,6 +5,19 @@
  * Copyright (C) 2022 Marc S. Ressl
  */
 
+/*
+ * Orbital Simulation
+ *
+ * 22.08 EDA
+ * Level 1 - Warm Up
+ *
+ * Grupo 2
+ * Autores: Diaz Guzman, Ezequiel & Fisher, Agustin
+ * 
+ * En este archvo se encuentra la declaracion de los metodos y datos
+ * miembro de la clase que se utiliza para manejar la simulacion.
+ */
+
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
@@ -19,7 +32,6 @@ class OrbitalSim
     OrbitalSim(float timeStep);
 
     void updateOrbitalSim();
-
 
     void updatePosition();
     void updateVelocity();
@@ -39,7 +51,7 @@ class OrbitalSim
     int asteroidsInSym;
     int bodiesInSym;
     float timeStep;
-    double timeElapsed; //getTime() is time since InitWindow()
+    double timeElapsed;
 };
 
 #endif

@@ -1,3 +1,16 @@
+/*
+ * Orbital Simulation
+ *
+ * 22.08 EDA
+ * Level 1 - Warm Up
+ *
+ * Grupo 2
+ * Autores: Diaz Guzman, Ezequiel & Fisher, Agustin
+ * 
+ * En este archvo se encuentra la declaracion de los metodos y datos
+ * miembro de la clase que se utiliza para manejar cada cuerpo celeste.
+ */
+
 #ifndef ORBITALBODY_H
 #define ORBITALBODY_H
 
@@ -12,7 +25,8 @@ class OrbitalBody
     OrbitalBody();
     ~OrbitalBody();
 
-    void initOrbitalBody(float mass, float radius, raylib::Color color, raylib::Vector3 position, raylib::Vector3 velocity);
+    void initOrbitalBody(float mass, float radius, raylib::Color color, 
+                         raylib::Vector3 position, raylib::Vector3 velocity);
     void initAsteroid(float centermass);
 
     raylib::Vector3 getPosition();

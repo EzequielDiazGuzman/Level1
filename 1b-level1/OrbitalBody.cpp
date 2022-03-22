@@ -1,3 +1,15 @@
+/*
+ * Orbital Simulation
+ *
+ * 22.08 EDA
+ * Level 1 - Warm Up
+ *
+ * Grupo 2
+ * Autores: Diaz Guzman, Ezequiel & Fisher, Agustin
+ * 
+ * En este archvo se definen los metodos miembro de la clase OrbitalBody.
+ */
+
 #include "raylib-cpp.hpp"
 #include "OrbitalBody.hpp"
 
@@ -11,7 +23,8 @@ OrbitalBody::~OrbitalBody()
     ;
 }
 
-void OrbitalBody::initOrbitalBody(float mass, float radius, raylib::Color color, raylib::Vector3 position, raylib::Vector3 velocity)
+void OrbitalBody::initOrbitalBody(float mass, float radius, raylib::Color color,
+                                  raylib::Vector3 position, raylib::Vector3 velocity)
 {
     this->mass = mass;
     this->radius = radius;
@@ -42,7 +55,8 @@ void OrbitalBody::initAsteroid(float centermass)
     // phi = 0;
 
     // https://en.wikipedia.org/wiki/Circular_orbit#Velocity
-    float v = sqrtf(GRAVITATIONAL_CONSTANT * centermass / r) * getRandomFloat(0.6F, 1.2F);
+    float v = sqrtf(GRAVITATIONAL_CONSTANT * centermass / r) * 
+              getRandomFloat(0.6F, 1.2F);
     float vy = getRandomFloat(-1E2F, 1E2F);
 
     // Fill in with your own fields:
@@ -52,6 +66,7 @@ void OrbitalBody::initAsteroid(float centermass)
     this->position = raylib::Vector3(r * cosf(phi), 0, r * sinf(phi));
     this->velocity = raylib::Vector3(-v * sinf(phi), vy, v * cosf(phi));
 }
+
 // Getters
 raylib::Vector3 OrbitalBody::getPosition()
 {
