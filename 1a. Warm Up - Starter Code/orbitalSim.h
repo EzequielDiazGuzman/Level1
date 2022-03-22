@@ -5,6 +5,19 @@
  * Copyright (C) 2022 Marc S. Ressl
  */
 
+/*
+ * Orbital Simulation
+ *
+ * 22.08 EDA
+ * Level 1 - Warm Up
+ *
+ * Grupo 2
+ * Autores: Diaz Guzman, Ezequiel & Fisher, Agustin
+ * 
+ * En este archivo estan declaradas las estructuras necesarias para
+ * hacer la simulacion.
+ */
+
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
@@ -24,7 +37,7 @@ struct OrbitalBody
 struct OrbitalSim
 {
     float timeStep;
-    double timeElapsed; //getTime() is time since InitWindow()
+    double timeElapsed;
     int bodiesInSym;
     OrbitalBody *orbitalBodies;
     int asteroidsInSym;

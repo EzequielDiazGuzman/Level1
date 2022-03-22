@@ -5,6 +5,19 @@
  * Copyright (C) 2022 Marc S. Ressl
  */
 
+/*
+ * Orbital Simulation
+ *
+ * 22.08 EDA
+ * Level 1 - Warm Up
+ *
+ * Grupo 2
+ * Autores: Diaz Guzman, Ezequiel & Fisher, Agustin
+ * 
+ * En este archivo se definen las funciones utilizadas para crear, actualizar y
+ * destruir la simulacion.
+ */
+
 #include "orbitalSim.h"
 #include "ephemerides.h"
 #include <stdlib.h>
@@ -39,7 +52,8 @@ void placeAsteroid(OrbitalBody *body, float centerMass)
     // phi = 0;
 
     // https://en.wikipedia.org/wiki/Circular_orbit#Velocity
-    float v = sqrtf(GRAVITATIONAL_CONSTANT * centerMass / r) * getRandomFloat(0.6F, 1.2F);
+    float v = sqrtf(GRAVITATIONAL_CONSTANT * centerMass / r) * 
+                    getRandomFloat(0.6F, 1.2F);
     float vy = getRandomFloat(-1E2F, 1E2F);
 
     // Fill in with your own fields:
@@ -104,12 +118,16 @@ void getPosition (OrbitalSim *sim)
 {
     for (int i = 0; i<sim->bodiesInSym; i++)
     {
-        sim->orbitalBodies[i].position = Vector3Add(sim->orbitalBodies[i].position, Vector3Scale(sim->orbitalBodies[i].velocity, sim->timeStep));
+        sim->orbitalBodies[i].position = Vector3Add(sim->orbitalBodies[i].position,
+                                                    Vector3Scale(sim->orbitalBodies[i]
+                                                    .velocity, sim->timeStep));
     }
 
     for (int i = 0; i<sim->asteroidsInSym; i++)
     {
-        sim->asteroids[i].position = Vector3Add(sim->asteroids[i].position, Vector3Scale(sim->asteroids[i].velocity, sim->timeStep));
+        sim->asteroids[i].position = Vector3Add(sim->asteroids[i].position,
+                                                Vector3Scale(sim->asteroids[i].
+                                                velocity, sim->timeStep));
     }
 }
 
@@ -117,12 +135,16 @@ void getVelocity (OrbitalSim *sim)
 {
     for (int i = 0; i<sim->bodiesInSym; i++)
     {
-        sim->orbitalBodies[i].velocity = Vector3Add(sim->orbitalBodies[i].velocity, Vector3Scale(sim->orbitalBodies[i].acceleration, sim->timeStep));
+        sim->orbitalBodies[i].velocity = Vector3Add(sim->orbitalBodies[i].velocity,
+                                                    Vector3Scale(sim->orbitalBodies[i]
+                                                    .acceleration, sim->timeStep));
     }
 
     for (int i = 0; i<sim->asteroidsInSym; i++)
     {
-        sim->asteroids[i].velocity = Vector3Add(sim->asteroids[i].velocity, Vector3Scale(sim->asteroids[i].acceleration, sim->timeStep));
+        sim->asteroids[i].velocity = Vector3Add(sim->asteroids[i].velocity,
+                                                Vector3Scale(sim->asteroids[i].
+                                                acceleration, sim->timeStep));
     }
 }
 
@@ -137,8 +159,14 @@ void getAcceleration (OrbitalSim *sim)
             if (i != j)
             {
                 float massj = sim->orbitalBodies[j].mass;
-                Vector3 xij = Vector3Subtract(sim->orbitalBodies[i].position, sim->orbitalBodies[j].position);
-                sim->orbitalBodies[i].acceleration = Vector3Add(sim->orbitalBodies[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
+                Vector3 xij = Vector3Subtract(sim->orbitalBodies[i].position,
+                                              sim->orbitalBodies[j].position);
+                sim->orbitalBodies[i].acceleration = Vector3Add(sim->orbitalBodies[i]
+                                                                .acceleration, 
+                                                                Vector3Scale(xij,
+                                                                ((GRAVITATIONAL_CONSTANT*
+                                                                (-1)*massj))/(pow(
+                                                                Vector3Length(xij),3))));
             }
         }
     }
@@ -150,19 +178,12 @@ void getAcceleration (OrbitalSim *sim)
         for (int j = 0; j < sim->bodiesInSym; j++)
         {
             float massj = sim->orbitalBodies[j].mass;
-            Vector3 xij = Vector3Subtract(sim->asteroids[i].position, sim->orbitalBodies[j].position);
-            sim->asteroids[i].acceleration = Vector3Add(sim->asteroids[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
+            Vector3 xij = Vector3Subtract(sim->asteroids[i].position, sim->
+                                          orbitalBodies[j].position);
+            sim->asteroids[i].acceleration = Vector3Add(sim->asteroids[i].
+                                                        acceleration, Vector3Scale(xij,
+                                                        ((GRAVITATIONAL_CONSTANT*(-1)
+                                                        *massj))/(pow(Vector3Length(xij),3))));
         }
-
-        // for (int j = 0; j < sim->asteroidsInSym; j++)
-        // {
-        //     if (i != j)
-        //     {
-        //         float massj = sim->asteroids[j].mass;
-        //         Vector3 xij = Vector3Subtract(sim->asteroids[i].position, sim->asteroids[j].position);
-        //         sim->asteroids[i].acceleration = Vector3Add(sim->asteroids[i].acceleration, Vector3Scale(xij, ((GRAVITATIONAL_CONSTANT*(-1)*massj))/(pow(Vector3Length(xij),3))));
-        //     }
-            
-        // }
     }
 }
