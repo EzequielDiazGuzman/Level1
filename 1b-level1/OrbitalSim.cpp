@@ -25,7 +25,8 @@
  * trabaja en esta simulacion (masas de planetas, millones de kilometros) y
  * para los fines de la misma, esta precision resulta ser suficiente.
  * 
- * Por ejemplo, al ingresar el numero -1.283674643550172E+09F, se representa como
+ * Por ejemplo, al ingresar el numero -1.283674643550172E+09F (este es el valor
+ * de la coordenada en x de la posicion inicial del sol), se representa como
  * -1.283674624E+09F. El error es de 1.52E-8. Esto es suficiente precision para
  * nuestra simulacion.
  *
